@@ -1,7 +1,8 @@
 package de.memozone.spring.crud.test.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
@@ -12,7 +13,20 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
 
+/*
+    @Size(max = 5, min = 1)
+    @Email
+    @Positive
+    @Negative
+    @PositiveOrZero
+    @NegativeOrZero
+    @Future
+    @FutureOrPresent
+    @Past
+    @PastOrPresent
+*/
     @NotBlank(message = "Please enter Department Name")
+    @Length(max = 8, min = 2)
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
