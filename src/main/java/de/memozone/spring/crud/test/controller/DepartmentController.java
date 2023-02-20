@@ -3,6 +3,7 @@ package de.memozone.spring.crud.test.controller;
 import de.memozone.spring.crud.test.entity.Department;
 import de.memozone.spring.crud.test.service.DepartmentService;
 import de.memozone.spring.crud.test.service.DepartmentServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class DepartmentController {
 
 
     @PostMapping
-    public Department saveDepartment(@RequestBody Department department) {
+    public Department saveDepartment(@Valid @RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
