@@ -1,12 +1,14 @@
 package de.memozone.spring.crud.test.service;
 
 import de.memozone.spring.crud.test.entity.Department;
+import de.memozone.spring.crud.test.error.DepartmentNotFoundException;
 import de.memozone.spring.crud.test.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -25,8 +27,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department getDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department getDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(departmentId);
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department not available");
+        }
+        return department.get();
     }
 
     @Override

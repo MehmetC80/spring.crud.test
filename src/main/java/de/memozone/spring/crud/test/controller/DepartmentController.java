@@ -1,6 +1,7 @@
 package de.memozone.spring.crud.test.controller;
 
 import de.memozone.spring.crud.test.entity.Department;
+import de.memozone.spring.crud.test.error.DepartmentNotFoundException;
 import de.memozone.spring.crud.test.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         LOGGER.info("Inside getDepartmentById of DepartmentController");
         return departmentService.getDepartmentById(departmentId);
 
