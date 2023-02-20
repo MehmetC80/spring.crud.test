@@ -2,7 +2,6 @@ package de.memozone.spring.crud.test.service;
 
 
 import de.memozone.spring.crud.test.entity.Department;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,4 +16,6 @@ public interface DepartmentService {
     void deleteDepartmentById(Long departmentId);
 
     Department updateDepartment(Long departmentId, Department department);
+
+    Department getDepartmentByName(String departmentName);
 }
