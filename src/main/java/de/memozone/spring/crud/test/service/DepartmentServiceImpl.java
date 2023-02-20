@@ -57,8 +57,18 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentDB;
     }
 
+
+    //Case-Sensitive
+//    @Override
+//    public Department getDepartmentByName(String departmentName) {
+//        return departmentRepository.findByDepartmentName(departmentName);
+//    }
+
+// Case-In-Sensitive
     @Override
     public Department getDepartmentByName(String departmentName) {
-        return departmentRepository.findByDepartmentName(departmentName);
+        return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
     }
+
+
 }
