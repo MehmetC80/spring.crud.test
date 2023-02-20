@@ -2,9 +2,14 @@ package de.memozone.spring.crud.test.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.bind.annotation.GetMapping;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 @Entity
 @Table
 public class Department {
@@ -32,6 +37,8 @@ public class Department {
     private String departmentCode;
 
 
+    /*
+    //without Lombok
     public Long getDepartmentId() {
         return departmentId;
     }
@@ -84,4 +91,6 @@ public class Department {
                 ", departmentCode='" + departmentCode + '\'' +
                 '}';
     }
+
+     */
 }
